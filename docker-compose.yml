@@ -1,4 +1,12 @@
 services:
+  authenticator:
+    image: jpkitt/authenticator:latest
+    ports:
+      - 80:80
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_started
   postgres:
     image: postgres
     environment:
@@ -6,11 +14,10 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
       PGDATA: /model/postgres
     volumes:
-      - postgres:/model/postgres
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-    networks:
-      - postgres
     restart: unless-stopped
   admin:
     image: adminer
@@ -18,13 +25,4 @@ services:
       - postgres
     ports:
       - "8080:8080"
-    networks:
-      - postgres
     restart: unless-stopped
-networks:
-  postgres:
-    driver: bridge
-
-volumes:
-  postgres:
-  pgadmin:

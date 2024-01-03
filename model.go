@@ -1,13 +1,9 @@
-package model
+package main
 
 import (
 	"github.com/jkittell/data/database"
 	"time"
 )
-
-const dbTimeout = time.Second * 3
-
-var users *database.PosgresDB[*User]
 
 // User is the structure which holds one user from the database.
 type User struct {

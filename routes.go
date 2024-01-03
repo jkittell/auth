@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"github.com/andrewpillar/query"
 	"github.com/gin-gonic/gin"
-	"github.com/jkittell/auth/model"
 	"github.com/jkittell/data/database"
 	"golang.org/x/crypto/bcrypt"
 	"log"
@@ -14,11 +13,11 @@ import (
 )
 
 type UsersHandler struct {
-	users *database.PosgresDB[*model.User]
+	users *database.PosgresDB[*User]
 }
 
-func NewUsersHandler(users *database.PosgresDB[*model.User]) *UsersHandler {
-	return &UsersHandler{
+func NewUsersHandler(users *database.PosgresDB[*User]) UsersHandler {
+	return UsersHandler{
 		users: users,
 	}
 }
@@ -64,7 +63,7 @@ func (h UsersHandler) Authenticate(c *gin.Context) {
 		res := struct {
 			Error   bool
 			Message string
-			Data    *model.User
+			Data    *User
 		}{
 			Error:   false,
 			Message: fmt.Sprintf("authorized user: %s", user.Email),
@@ -79,7 +78,7 @@ func (h UsersHandler) Authenticate(c *gin.Context) {
 }
 
 func (h UsersHandler) CreateUser(c *gin.Context) {
-	var user *model.User
+	var user *User
 	if err := c.ShouldBindJSON(&user); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
@@ -135,7 +134,7 @@ func (h UsersHandler) GetUser(c *gin.Context) {
 }
 
 func (h UsersHandler) UpdateUser(c *gin.Context) {
-	var user *model.User
+	var user *User
 	if err := c.ShouldBindJSON(&user); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
@@ -159,7 +158,7 @@ func (h UsersHandler) UpdateUser(c *gin.Context) {
 }
 
 func (h UsersHandler) DeleteUser(c *gin.Context) {
-	var user *model.User
+	var user *User
 	if err := c.ShouldBindJSON(&user); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return

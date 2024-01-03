@@ -5,14 +5,13 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/brianvoe/gofakeit/v6"
-	"github.com/jkittell/auth/model"
 	"github.com/jkittell/data/api/client"
 	"testing"
 	"time"
 )
 
-func newUser() *model.User {
-	return &model.User{
+func newUser() *User {
+	return &User{
 		ID:        0,
 		Email:     gofakeit.Email(),
 		FirstName: gofakeit.FirstName(),
