@@ -6,8 +6,7 @@ require (
 	github.com/andrewpillar/query v0.0.0-20220329202258-3234d5f45afd
 	github.com/brianvoe/gofakeit/v6 v6.26.3
 	github.com/gin-gonic/gin v1.9.1
-	github.com/jackc/pgx/v4 v4.18.1
-	github.com/jkittell/data v0.0.0-20240103160336-e56a580d1650
+	github.com/jkittell/data v0.0.0-20240107145528-404dff51dc85
 	golang.org/x/crypto v0.17.0
 )
 
@@ -32,6 +31,7 @@ require (
 	github.com/jackc/pgproto3/v2 v2.3.2 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20231201235250-de7065d80cb9 // indirect
 	github.com/jackc/pgtype v1.14.0 // indirect
+	github.com/jackc/pgx/v4 v4.18.1 // indirect
 	github.com/jackc/puddle v1.3.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/compress v1.17.4 // indirect
@@ -60,13 +60,12 @@ require (
 	github.com/xdg-go/stringprep v1.0.4 // indirect
 	github.com/youmark/pkcs8 v0.0.0-20201027041543-1326539a0a0a // indirect
 	go.mongodb.org/mongo-driver v1.13.1 // indirect
-	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
-	golang.org/x/arch v0.6.0 // indirect
-	golang.org/x/exp v0.0.0-20231226003508-02704c960a9b // indirect
+	golang.org/x/arch v0.7.0 // indirect
+	golang.org/x/exp v0.0.0-20240103183307-be819d1f06fc // indirect
 	golang.org/x/net v0.19.0 // indirect
-	golang.org/x/sync v0.5.0 // indirect
-	golang.org/x/sys v0.15.0 // indirect
+	golang.org/x/sync v0.6.0 // indirect
+	golang.org/x/sys v0.16.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	google.golang.org/protobuf v1.32.0 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect

@@ -22,10 +22,6 @@ func NewUsersHandler(users *database.PosgresDB[*User]) UsersHandler {
 	}
 }
 
-func homePage(c *gin.Context) {
-	c.String(http.StatusOK, "This is my home page")
-}
-
 func HashPassword(password string) (string, error) {
 	bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
 	return string(bytes), err

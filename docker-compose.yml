@@ -1,6 +1,11 @@
 services:
   authenticator:
     image: jpkitt/authenticator:latest
+    environment:
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_USERNAME=${POSTGRES_USERNAME}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     ports:
       - 80:80
     restart: unless-stopped

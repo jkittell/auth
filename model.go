@@ -7,7 +7,7 @@ import (
 
 // User is the structure which holds one user from the database.
 type User struct {
-	ID        int       `json:"id"`
+	Id        int       `json:"id"`
 	Email     string    `json:"email"`
 	FirstName string    `json:"first_name,omitempty"`
 	LastName  string    `json:"last_name,omitempty"`
@@ -18,12 +18,12 @@ type User struct {
 }
 
 func (u *User) Primary() (string, any) {
-	return "id", u.ID
+	return "id", u.Id
 }
 
 func (u *User) Scan(fields []string, scan database.ScanFunc) error {
 	return database.Scan(map[string]any{
-		"id":         &u.ID,
+		"id":         &u.Id,
 		"email":      &u.Email,
 		"first_name": &u.FirstName,
 		"last_name":  &u.LastName,

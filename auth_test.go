@@ -12,7 +12,7 @@ import (
 
 func newUser() *User {
 	return &User{
-		ID:        0,
+		Id:        0,
 		Email:     gofakeit.Email(),
 		FirstName: gofakeit.FirstName(),
 		LastName:  gofakeit.LastName(),
@@ -32,7 +32,7 @@ func TestUsersHandler(t *testing.T) {
 	}
 	reader := bytes.NewReader(data)
 
-	res, err := client.Post("http://localhost/users", nil, reader)
+	res, err := client.Post("http://127.0.0.1/users", nil, reader)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -45,7 +45,7 @@ func TestUsersHandler(t *testing.T) {
 	err = json.Unmarshal(res, &r)
 
 	// get
-	res, err = client.Get(fmt.Sprintf("http://localhost/users/%d", r.Id), nil, nil)
+	res, err = client.Get(fmt.Sprintf("http://127.0.0.1/users/%d", r.Id), nil, nil)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -65,9 +65,9 @@ func TestUsersHandler(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	res, err = client.Put(fmt.Sprintf("http://localhost/users/%d", user.ID), nil, bytes.NewReader(userJSON))
+	res, err = client.Put(fmt.Sprintf("http://127.0.0.1/users/%d", user.Id), nil, bytes.NewReader(userJSON))
 
-	all, err := client.Get("http://localhost/users", nil, nil)
+	all, err := client.Get("http://127.0.0.1/users", nil, nil)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -85,7 +85,7 @@ func TestUsersHandler_Authenticate(t *testing.T) {
 	}
 	reader := bytes.NewReader(data)
 
-	res, err := client.Post("http://localhost/users", nil, reader)
+	res, err := client.Post("http://127.0.0.1/users", nil, reader)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -98,7 +98,7 @@ func TestUsersHandler_Authenticate(t *testing.T) {
 	err = json.Unmarshal(res, &r)
 
 	// get
-	res, err = client.Get(fmt.Sprintf("http://localhost/users/%d", r.Id), nil, nil)
+	res, err = client.Get(fmt.Sprintf("http://127.0.0.1/users/%d", r.Id), nil, nil)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -121,7 +121,7 @@ func TestUsersHandler_Authenticate(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	res, err = client.Post("http://localhost/authenticate", nil, bytes.NewReader(data))
+	res, err = client.Post("http://127.0.0.1/authenticate", nil, bytes.NewReader(data))
 	if err != nil {
 		t.Fatal(err)
 	}
